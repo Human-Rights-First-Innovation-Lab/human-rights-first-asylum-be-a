@@ -1,5 +1,5 @@
 const express = require('express');
-const authRequired = require('../middleware/authRequired');
+const authRequired = require('../middleware/checkJwt');
 const FAQ = require('./faqModel');
 const router = express.Router();
 const nodemailer = require('nodemailer');

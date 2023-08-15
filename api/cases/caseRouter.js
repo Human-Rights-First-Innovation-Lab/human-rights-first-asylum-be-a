@@ -5,7 +5,7 @@ const AWS = require('../../utils/AWS');
 const Cache = require('../middleware/cache');
 const CSV = require('csv-string');
 const router = express.Router();
-const authRequired = require('../middleware/authRequired');
+const authRequired = require('../middleware/checkJwt');
 const { onlyRoles } = require('../middleware/onlyRoles');
 const createNotification = require('../../utils/createNotification');
 

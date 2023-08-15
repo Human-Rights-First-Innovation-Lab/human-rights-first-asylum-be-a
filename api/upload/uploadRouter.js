@@ -5,7 +5,7 @@ const axios = require('axios');
 
 const router = express.Router();
 require('dotenv').config();
-const authRequired = require('../middleware/authRequired');
+const authRequired = require('../middleware/checkJwt');
 const Cases = require('../cases/caseModel');
 const upload = require('./uploads/fileupload');
 
