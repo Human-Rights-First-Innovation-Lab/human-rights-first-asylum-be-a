@@ -1,5 +1,5 @@
 const express = require('express');
-const authRequired = require('../middleware/authRequired');
+const authRequired = require('../middleware/checkJwt');
 const Profiles = require('./profileModel');
 const router = express.Router();
 const { onlyRoles } = require('../middleware/onlyRoles');
@@ -40,6 +40,7 @@ router.post('/', authRequired, onlyRoles([1]), async (req, res) => {
   };
   if (profile) {
     try {
+      // eslint-disable-next-line
       client.createUser(newUser).then((user) => {
         const appUser = {
           user_id: user.id,
@@ -78,6 +79,7 @@ router.delete('/:id', authRequired, onlyRoles([1]), (req, res) => {
   const id = req.params.id;
   try {
     Profiles.findById(id).then(() => {
+      // eslint-disable-next-line
       client
         .getUser(id)
         .then((user) => {

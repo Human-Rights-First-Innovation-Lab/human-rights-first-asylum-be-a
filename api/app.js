@@ -10,7 +10,10 @@ if (process.env.NODE_ENV != 'production' && config_result.error) {
   throw config_result.error;
 }
 
-//###[  Routers ]###
+/* [ Middleware ] */
+const checkJwt = require('./middleware/checkJwt');
+
+//###[ Routers ]###
 const indexRouter = require('./index/indexRouter');
 const profileRouter = require('./profile/profileRouter');
 const dsRouter = require('./dsService/dsRouter');
@@ -33,11 +36,12 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.LOCAL_ORIGIN || 'https://a.humanrightsfirstasylum.dev',
+    origin: process.env.LOCAL_ORIGIN,
   })
 );
 app.use(logger('dev'));
 app.use(cookieParser());
+app.use(checkJwt);
 
 // application routes
 app.use('/', indexRouter);

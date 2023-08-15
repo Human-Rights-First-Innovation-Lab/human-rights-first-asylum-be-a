@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const dsModel = require('./dsModel');
-const authRequired = require('../middleware/authRequired');
+const authRequired = require('../middleware/checkJwt');
 const Cache = require('../middleware/cache');
 const upload = require('../../utils/uploadFile');
 

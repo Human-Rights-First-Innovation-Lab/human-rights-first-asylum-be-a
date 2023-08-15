@@ -1,5 +1,5 @@
 const express = require('express');
-const authRequired = require('../middleware/authRequired');
+const authRequired = require('../middleware/checkJwt');
 const Roles = require('./rolesModel');
 const router = express.Router();
 const { onlyRoles } = require('../middleware/onlyRoles');
